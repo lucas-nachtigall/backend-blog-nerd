@@ -1,0 +1,28 @@
+// Importe o provedor PostgreSQL
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+// Configuração da conexão com o banco de dados PostgreSQL
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Definição do modelo User
+model User {
+  id    Int      @id @default(autoincrement())
+  name  String
+  senha  Int
+  email String   @unique
+  comments Comment[]
+}
+
+// Definição do modelo Comment
+model Comment {
+  id                Int      @id @default(autoincrement())
+  comment           String
+  userId            Int
+  user              User     @relation(fields: [userId], references: [id])
+}
