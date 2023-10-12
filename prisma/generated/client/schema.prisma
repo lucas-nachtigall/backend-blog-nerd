@@ -22,7 +22,8 @@ model User {
 // Definição do modelo Comment
 model Comment {
   id                Int      @id @default(autoincrement())
-  comment           String
+  title           String
+  content          String
   userId            Int
   user              User     @relation(fields: [userId], references: [id])
 }

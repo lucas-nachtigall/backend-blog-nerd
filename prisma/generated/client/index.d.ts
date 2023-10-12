@@ -1959,19 +1959,22 @@ export namespace Prisma {
 
   export type CommentMinAggregateOutputType = {
     id: number | null
-    comment: string | null
+    title: string | null
+    content: string | null
     userId: number | null
   }
 
   export type CommentMaxAggregateOutputType = {
     id: number | null
-    comment: string | null
+    title: string | null
+    content: string | null
     userId: number | null
   }
 
   export type CommentCountAggregateOutputType = {
     id: number
-    comment: number
+    title: number
+    content: number
     userId: number
     _all: number
   }
@@ -1989,19 +1992,22 @@ export namespace Prisma {
 
   export type CommentMinAggregateInputType = {
     id?: true
-    comment?: true
+    title?: true
+    content?: true
     userId?: true
   }
 
   export type CommentMaxAggregateInputType = {
     id?: true
-    comment?: true
+    title?: true
+    content?: true
     userId?: true
   }
 
   export type CommentCountAggregateInputType = {
     id?: true
-    comment?: true
+    title?: true
+    content?: true
     userId?: true
     _all?: true
   }
@@ -2094,7 +2100,8 @@ export namespace Prisma {
 
   export type CommentGroupByOutputType = {
     id: number
-    comment: string
+    title: string
+    content: string
     userId: number
     _count: CommentCountAggregateOutputType | null
     _avg: CommentAvgAggregateOutputType | null
@@ -2119,14 +2126,16 @@ export namespace Prisma {
 
   export type CommentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    comment?: boolean
+    title?: boolean
+    content?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectScalar = {
     id?: boolean
-    comment?: boolean
+    title?: boolean
+    content?: boolean
     userId?: boolean
   }
 
@@ -2142,7 +2151,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      comment: string
+      title: string
+      content: string
       userId: number
     }, ExtArgs["result"]["comment"]>
     composites: {}
@@ -2540,7 +2550,8 @@ export namespace Prisma {
    */ 
   interface CommentFieldRefs {
     readonly id: FieldRef<"Comment", 'Int'>
-    readonly comment: FieldRef<"Comment", 'String'>
+    readonly title: FieldRef<"Comment", 'String'>
+    readonly content: FieldRef<"Comment", 'String'>
     readonly userId: FieldRef<"Comment", 'Int'>
   }
     
@@ -2895,7 +2906,8 @@ export namespace Prisma {
 
   export const CommentScalarFieldEnum: {
     id: 'id',
-    comment: 'comment',
+    title: 'title',
+    content: 'content',
     userId: 'userId'
   };
 
@@ -3025,14 +3037,16 @@ export namespace Prisma {
     OR?: CommentWhereInput[]
     NOT?: CommentWhereInput | CommentWhereInput[]
     id?: IntFilter<"Comment"> | number
-    comment?: StringFilter<"Comment"> | string
+    title?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
     userId?: IntFilter<"Comment"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type CommentOrderByWithRelationInput = {
     id?: SortOrder
-    comment?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -3042,14 +3056,16 @@ export namespace Prisma {
     AND?: CommentWhereInput | CommentWhereInput[]
     OR?: CommentWhereInput[]
     NOT?: CommentWhereInput | CommentWhereInput[]
-    comment?: StringFilter<"Comment"> | string
+    title?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
     userId?: IntFilter<"Comment"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
   export type CommentOrderByWithAggregationInput = {
     id?: SortOrder
-    comment?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
     userId?: SortOrder
     _count?: CommentCountOrderByAggregateInput
     _avg?: CommentAvgOrderByAggregateInput
@@ -3063,7 +3079,8 @@ export namespace Prisma {
     OR?: CommentScalarWhereWithAggregatesInput[]
     NOT?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Comment"> | number
-    comment?: StringWithAggregatesFilter<"Comment"> | string
+    title?: StringWithAggregatesFilter<"Comment"> | string
+    content?: StringWithAggregatesFilter<"Comment"> | string
     userId?: IntWithAggregatesFilter<"Comment"> | number
   }
 
@@ -3118,40 +3135,47 @@ export namespace Prisma {
   }
 
   export type CommentCreateInput = {
-    comment: string
+    title: string
+    content: string
     user: UserCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateInput = {
     id?: number
-    comment: string
+    title: string
+    content: string
     userId: number
   }
 
   export type CommentUpdateInput = {
-    comment?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    comment?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type CommentCreateManyInput = {
     id?: number
-    comment: string
+    title: string
+    content: string
     userId: number
   }
 
   export type CommentUpdateManyMutationInput = {
-    comment?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    comment?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3261,7 +3285,8 @@ export namespace Prisma {
 
   export type CommentCountOrderByAggregateInput = {
     id?: SortOrder
-    comment?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
     userId?: SortOrder
   }
 
@@ -3272,13 +3297,15 @@ export namespace Prisma {
 
   export type CommentMaxOrderByAggregateInput = {
     id?: SortOrder
-    comment?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
     userId?: SortOrder
   }
 
   export type CommentMinOrderByAggregateInput = {
     id?: SortOrder
-    comment?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
     userId?: SortOrder
   }
 
@@ -3425,12 +3452,14 @@ export namespace Prisma {
   }
 
   export type CommentCreateWithoutUserInput = {
-    comment: string
+    title: string
+    content: string
   }
 
   export type CommentUncheckedCreateWithoutUserInput = {
     id?: number
-    comment: string
+    title: string
+    content: string
   }
 
   export type CommentCreateOrConnectWithoutUserInput = {
@@ -3464,7 +3493,8 @@ export namespace Prisma {
     OR?: CommentScalarWhereInput[]
     NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
     id?: IntFilter<"Comment"> | number
-    comment?: StringFilter<"Comment"> | string
+    title?: StringFilter<"Comment"> | string
+    content?: StringFilter<"Comment"> | string
     userId?: IntFilter<"Comment"> | number
   }
 
@@ -3512,21 +3542,25 @@ export namespace Prisma {
 
   export type CommentCreateManyUserInput = {
     id?: number
-    comment: string
+    title: string
+    content: string
   }
 
   export type CommentUpdateWithoutUserInput = {
-    comment?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    comment?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    comment?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
   }
 
 
