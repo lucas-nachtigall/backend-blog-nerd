@@ -13,8 +13,8 @@ datasource db {
 // Definição do modelo User
 model User {
   id    Int      @id @default(autoincrement())
-  name  String
-  senha  Int
+  user  String
+  password  String
   email String   @unique
   comments Comment[]
 }
