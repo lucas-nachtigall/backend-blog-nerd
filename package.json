@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.ts npx prisma migrate dev --name init npx prisma generate",
+    "dev": "npm install nodemon index.ts npx prisma migrate dev --name init npx prisma generate",
     "build": "tsc index.ts npx prisma migrate dev --name init npx prisma generate"
   },
   "keywords": [],
