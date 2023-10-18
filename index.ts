@@ -6,6 +6,8 @@ const app = express();
 
 const cors = require("cors");
 
+//aqui terá o banco na nuvem
+
 const bcrypt = require("bcrypt");
 
 app.use(express.json());
