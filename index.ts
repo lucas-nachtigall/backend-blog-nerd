@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 const express = require("express");
 const app = express();
 
-const cors = require("cors"); // Importe o pacote cors
+const cors = require("cors");
 
 const bcrypt = require("bcrypt");
 
@@ -78,6 +78,7 @@ async function getPosts() {
 }
 
 async function login(username: string, password: string) {
+  
   const user = await prisma.user.findFirst({
     where: {
       user: username,
@@ -94,7 +95,9 @@ async function login(username: string, password: string) {
     throw new Error("Senha incorreta");
   }
 
-  return user;
+  return {
+    ...user, name: user.user
+  };
 }
 
 async function putUsser(id: number, user: string, email: string) {
@@ -157,6 +160,7 @@ app.post("/coments",async (req: any, res: any) => {
 );
 
 app.post("/login", async (req: any, res: any) => {
+  
   const { user, password } = req.body;
 
   try {
@@ -190,7 +194,9 @@ app.get("/posts", async (req: any, res: any) => {
     const getPost = await getPosts();
 
     console.log(getPost);
+
     res.status(200).json(getPost);
+
   } catch (error) {
     res.status(500).json({ error: "Erro ao obter posts" });
   }
