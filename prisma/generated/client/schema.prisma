@@ -16,14 +16,15 @@ model User {
   user  String
   password  String
   email String   @unique
-  comments Comment[]
+  comments Post[]
 }
 
 // Definição do modelo Comment
-model Comment {
-  id                Int      @id @default(autoincrement())
-  title           String
-  content          String
-  userId            Int
-  user              User     @relation(fields: [userId], references: [id])
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  timestamp DateTime @default(now()) // Adiciona o campo de hora de postagem
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
 }

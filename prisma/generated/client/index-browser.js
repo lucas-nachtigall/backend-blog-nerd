@@ -114,10 +114,11 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email'
 };
 
-exports.Prisma.CommentScalarFieldEnum = {
+exports.Prisma.PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
   content: 'content',
+  timestamp: 'timestamp',
   userId: 'userId'
 };
 
@@ -134,7 +135,7 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Comment: 'Comment'
+  Post: 'Post'
 };
 
 /**

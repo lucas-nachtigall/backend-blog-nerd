@@ -48,7 +48,7 @@ async function createComment(id: number, title: string, content: string) {
   console.log(id, title, content);
 
   try {
-    const newComment = await prisma.comment.create({
+    const newComment = await prisma.post.create({
       data: {
         title,
         content,
@@ -62,7 +62,7 @@ async function createComment(id: number, title: string, content: string) {
 }
 
 async function getPosts() {
-  const getPosts = await prisma.comment.findMany({
+  const getPosts = await prisma.post.findMany({
     select: {
       id: true,
       title: true,
