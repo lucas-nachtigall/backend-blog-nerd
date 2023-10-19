@@ -70,10 +70,12 @@ async function getPosts() {
       id: true,
       title: true,
       content: true,
+      timestamp: true,
       user: {
         select:{
           id: true,
           user: true,
+          photo: true
         }
       }
     }
