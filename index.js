@@ -64,7 +64,7 @@ app.use(express.json());
 app.listen(3333, function () {
     console.log("rodando");
 });
-var DateTime = require('luxon').DateTime;
+// const { DateTime } = require('luxon');
 //criar pasta e colocar funtion na pasta
 function createUser(user, hashedPassword, email) {
     return __awaiter(this, void 0, void 0, function () {
@@ -94,18 +94,20 @@ function createUser(user, hashedPassword, email) {
 // Função para criar um comentário associado a um usuário
 function createComment(id, title, content) {
     return __awaiter(this, void 0, void 0, function () {
-        var currentDateTimeCuiaba, newComment, error_2;
+        var currentUtcDateTime, offsetMinutes, newComment, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    currentDateTimeCuiaba = DateTime.now().setZone('America/Cuiaba');
+                    currentUtcDateTime = new Date();
+                    offsetMinutes = -240;
+                    currentUtcDateTime.setMinutes(currentUtcDateTime.getMinutes() + offsetMinutes);
                     return [4 /*yield*/, prisma.post.create({
                             data: {
                                 title: title,
                                 content: content,
                                 userId: id,
-                                timestamp: currentDateTimeCuiaba.toJSDate(), // Adicione a hora atual de Cuiabá ao campo timestamp
+                                timestamp: currentUtcDateTime,
                             },
                         })];
                 case 1:

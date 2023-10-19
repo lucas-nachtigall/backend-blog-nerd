@@ -25,7 +25,7 @@ app.listen(3333, () => {
   console.log("rodando");
 });
 
-const { DateTime } = require('luxon');
+// const { DateTime } = require('luxon');
 
 //criar pasta e colocar funtion na pasta
 
@@ -47,14 +47,18 @@ async function createUser(user: string, hashedPassword: string, email: string) {
 // Função para criar um comentário associado a um usuário
 async function createComment(id: number, title: string, content: string) {
   try {
-    const currentDateTimeCuiaba = DateTime.now().setZone('America/Cuiaba'); // Obtém a hora atual em Cuiabá
+    const currentUtcDateTime = new Date();
+
+    // Defina o deslocamento de UTC para Cuiabá (fuso horário -240 minutos)
+    const offsetMinutes = -240;
+    currentUtcDateTime.setMinutes(currentUtcDateTime.getMinutes() + offsetMinutes);
 
     const newComment = await prisma.post.create({
       data: {
         title,
         content,
         userId: id,
-        timestamp: currentDateTimeCuiaba.toJSDate(), // Adicione a hora atual de Cuiabá ao campo timestamp
+        timestamp: currentUtcDateTime,
       },
     });
 
