@@ -25,6 +25,8 @@ app.listen(3333, () => {
   console.log("rodando");
 });
 
+const { DateTime } = require('luxon');
+
 //criar pasta e colocar funtion na pasta
 
 async function createUser(user: string, hashedPassword: string, email: string) {
@@ -44,17 +46,18 @@ async function createUser(user: string, hashedPassword: string, email: string) {
 }
 // Função para criar um comentário associado a um usuário
 async function createComment(id: number, title: string, content: string) {
-
-  console.log(id, title, content);
-
   try {
+    const currentDateTimeCuiaba = DateTime.now().setZone('America/Cuiaba'); // Obtém a hora atual em Cuiabá
+
     const newComment = await prisma.post.create({
       data: {
         title,
         content,
         userId: id,
+        timestamp: currentDateTimeCuiaba.toJSDate(), // Adicione a hora atual de Cuiabá ao campo timestamp
       },
     });
+
     return newComment;
   } catch (error) {
     throw error;
@@ -154,7 +157,9 @@ app.post("/coments",async (req: any, res: any) => {
 
     try {
       const newComment = await createComment(id, title, content);
+
       res.status(201).json(newComment);
+      
     } catch (error) {
       res.status(500).json({ error: "Erro ao criar comentário" });
     }
