@@ -64,6 +64,7 @@ app.use(express.json());
 app.listen(3333, function () {
     console.log("rodando");
 });
+var DateTime = require('luxon').DateTime;
 //criar pasta e colocar funtion na pasta
 function createUser(user, hashedPassword, email) {
     return __awaiter(this, void 0, void 0, function () {
@@ -93,28 +94,27 @@ function createUser(user, hashedPassword, email) {
 // Função para criar um comentário associado a um usuário
 function createComment(id, title, content) {
     return __awaiter(this, void 0, void 0, function () {
-        var newComment, error_2;
+        var currentDateTimeCuiaba, newComment, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(id, title, content);
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, prisma.comment.create({
+                    _a.trys.push([0, 2, , 3]);
+                    currentDateTimeCuiaba = DateTime.now().setZone('America/Cuiaba');
+                    return [4 /*yield*/, prisma.post.create({
                             data: {
                                 title: title,
                                 content: content,
                                 userId: id,
+                                timestamp: currentDateTimeCuiaba.toJSDate(), // Adicione a hora atual de Cuiabá ao campo timestamp
                             },
                         })];
-                case 2:
+                case 1:
                     newComment = _a.sent();
                     return [2 /*return*/, newComment];
-                case 3:
+                case 2:
                     error_2 = _a.sent();
                     throw error_2;
-                case 4: return [2 /*return*/];
+                case 3: return [2 /*return*/];
             }
         });
     });
@@ -124,15 +124,17 @@ function getPosts() {
         var getPosts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, prisma.comment.findMany({
+                case 0: return [4 /*yield*/, prisma.post.findMany({
                         select: {
                             id: true,
                             title: true,
                             content: true,
+                            timestamp: true,
                             user: {
                                 select: {
                                     id: true,
                                     user: true,
+                                    photo: true
                                 }
                             }
                         }
@@ -170,7 +172,7 @@ function login(username, password) {
         });
     });
 }
-function putUsser(id, user, email) {
+function putUsser(id, user, email, photo) {
     return __awaiter(this, void 0, void 0, function () {
         var updateUser;
         return __generator(this, function (_a) {
@@ -182,6 +184,7 @@ function putUsser(id, user, email) {
                         data: {
                             user: user,
                             email: email,
+                            photo: photo,
                         },
                     })];
                 case 1:
@@ -197,6 +200,7 @@ app.post("/users", function (req, res) { return __awaiter(void 0, void 0, void 0
         switch (_b.label) {
             case 0:
                 _a = req.body, user = _a.user, password = _a.password, email = _a.email;
+                console.log(user, password, email);
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 4, , 5]);
@@ -207,6 +211,7 @@ app.post("/users", function (req, res) { return __awaiter(void 0, void 0, void 0
                 return [4 /*yield*/, createUser(user, hashedPassword, email)];
             case 3:
                 newUser = _b.sent();
+                console.log(newUser);
                 res.status(201).json({ sucess: "Usuário criado com sucesso" });
                 return [3 /*break*/, 5];
             case 4:
@@ -264,15 +269,16 @@ app.post("/login", function (req, res) { return __awaiter(void 0, void 0, void 0
     });
 }); });
 app.post("/putUsser", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, id, user, email, updatedUser, error_6;
+    var _a, id, user, email, photo, updatedUser, error_6;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, id = _a.id, user = _a.user, email = _a.email;
+                _a = req.body, id = _a.id, user = _a.user, email = _a.email, photo = _a.photo;
+                console.log(photo);
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, putUsser(id, user, email)];
+                return [4 /*yield*/, putUsser(id, user, email, photo)];
             case 2:
                 updatedUser = _b.sent();
                 res
