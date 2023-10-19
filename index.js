@@ -94,14 +94,12 @@ function createUser(user, hashedPassword, email) {
 // Função para criar um comentário associado a um usuário
 function createComment(id, title, content) {
     return __awaiter(this, void 0, void 0, function () {
-        var currentUtcDateTime, offsetMinutes, newComment, error_2;
+        var currentUtcDateTime, newComment, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
                     currentUtcDateTime = new Date();
-                    offsetMinutes = -240;
-                    currentUtcDateTime.setMinutes(currentUtcDateTime.getMinutes() + offsetMinutes);
                     return [4 /*yield*/, prisma.post.create({
                             data: {
                                 title: title,

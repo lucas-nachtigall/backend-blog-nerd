@@ -49,10 +49,6 @@ async function createComment(id: number, title: string, content: string) {
   try {
     const currentUtcDateTime = new Date();
 
-    // Defina o deslocamento de UTC para Cuiabá (fuso horário -240 minutos)
-    const offsetMinutes = -240;
-    currentUtcDateTime.setMinutes(currentUtcDateTime.getMinutes() + offsetMinutes);
-
     const newComment = await prisma.post.create({
       data: {
         title,
