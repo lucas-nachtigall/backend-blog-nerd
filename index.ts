@@ -136,12 +136,16 @@ app.post(
   ) => {
     const { user, password, email } = req.body;
 
+    console.log(user, password, email);
+
     try {
       const saltRounds = 16;
 
       const hashedPassword = await bcrypt.hash(password, saltRounds);
 
       const newUser = await createUser(user, hashedPassword, email);
+
+      console.log(newUser);
 
       res.status(201).json({ sucess: "Usuário criado com sucesso" });
     } catch (error) {
@@ -159,7 +163,7 @@ app.post("/coments",async (req: any, res: any) => {
       const newComment = await createComment(id, title, content);
 
       res.status(201).json(newComment);
-      
+
     } catch (error) {
       res.status(500).json({ error: "Erro ao criar comentário" });
     }
