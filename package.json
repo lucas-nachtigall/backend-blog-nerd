@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.ts",
     "build": "tsc index.ts",
-    "postbuild": "npx prisma migrate deploy --name init && npx prisma generate",
+    "postbuild": "npx prisma migrate deploy init && npx prisma generate",
     "start": "node index.js"
   },
   "keywords": [],
