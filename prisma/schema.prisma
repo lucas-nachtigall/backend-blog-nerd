@@ -15,7 +15,7 @@ model User {
   id      Int      @id @default(autoincrement())
   user    String
   password String
-  photo   String   @default("default.jpg")
+  photo   String   @default("github.png")
   email   String   @unique
   comments Post[]
 }
