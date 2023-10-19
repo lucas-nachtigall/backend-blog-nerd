@@ -189,6 +189,8 @@ app.post("/login", async (req: any, res: any) => {
 app.post("/putUsser", async (req: any, res: any) => {
   const { id, user, email, photo } = req.body;
 
+  console.log(photo);
+
   try {
     const updatedUser = await putUsser(id, user, email, photo);
 

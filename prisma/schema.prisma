@@ -12,13 +12,14 @@ datasource db {
 
 // Definição do modelo User
 model User {
-  id    Int      @id @default(autoincrement())
-  user  String
-  password  String
-  photo  String
-  email String   @unique
+  id      Int      @id @default(autoincrement())
+  user    String
+  password String
+  photo   String   @default("default.jpg")
+  email   String   @unique
   comments Post[]
 }
+
 
 // Definição do modelo Comment
 model Post {

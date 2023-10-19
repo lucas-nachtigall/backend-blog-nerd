@@ -995,6 +995,7 @@ export namespace Prisma {
     id: number | null
     user: string | null
     password: string | null
+    photo: string | null
     email: string | null
   }
 
@@ -1002,6 +1003,7 @@ export namespace Prisma {
     id: number | null
     user: string | null
     password: string | null
+    photo: string | null
     email: string | null
   }
 
@@ -1009,6 +1011,7 @@ export namespace Prisma {
     id: number
     user: number
     password: number
+    photo: number
     email: number
     _all: number
   }
@@ -1026,6 +1029,7 @@ export namespace Prisma {
     id?: true
     user?: true
     password?: true
+    photo?: true
     email?: true
   }
 
@@ -1033,6 +1037,7 @@ export namespace Prisma {
     id?: true
     user?: true
     password?: true
+    photo?: true
     email?: true
   }
 
@@ -1040,6 +1045,7 @@ export namespace Prisma {
     id?: true
     user?: true
     password?: true
+    photo?: true
     email?: true
     _all?: true
   }
@@ -1134,6 +1140,7 @@ export namespace Prisma {
     id: number
     user: string
     password: string
+    photo: string
     email: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
@@ -1160,6 +1167,7 @@ export namespace Prisma {
     id?: boolean
     user?: boolean
     password?: boolean
+    photo?: boolean
     email?: boolean
     comments?: boolean | User$commentsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1169,6 +1177,7 @@ export namespace Prisma {
     id?: boolean
     user?: boolean
     password?: boolean
+    photo?: boolean
     email?: boolean
   }
 
@@ -1187,6 +1196,7 @@ export namespace Prisma {
       id: number
       user: string
       password: string
+      photo: string
       email: string
     }, ExtArgs["result"]["user"]>
     composites: {}
@@ -1586,6 +1596,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly user: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly photo: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
   }
     
@@ -2909,6 +2920,7 @@ export namespace Prisma {
     id: 'id',
     user: 'user',
     password: 'password',
+    photo: 'photo',
     email: 'email'
   };
 
@@ -3013,6 +3025,7 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     user?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    photo?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     comments?: PostListRelationFilter
   }
@@ -3021,6 +3034,7 @@ export namespace Prisma {
     id?: SortOrder
     user?: SortOrder
     password?: SortOrder
+    photo?: SortOrder
     email?: SortOrder
     comments?: PostOrderByRelationAggregateInput
   }
@@ -3033,6 +3047,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     user?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    photo?: StringFilter<"User"> | string
     comments?: PostListRelationFilter
   }, "id" | "email">
 
@@ -3040,6 +3055,7 @@ export namespace Prisma {
     id?: SortOrder
     user?: SortOrder
     password?: SortOrder
+    photo?: SortOrder
     email?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
@@ -3055,6 +3071,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     user?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    photo?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
   }
 
@@ -3118,6 +3135,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     user: string
     password: string
+    photo?: string
     email: string
     comments?: PostCreateNestedManyWithoutUserInput
   }
@@ -3126,6 +3144,7 @@ export namespace Prisma {
     id?: number
     user: string
     password: string
+    photo?: string
     email: string
     comments?: PostUncheckedCreateNestedManyWithoutUserInput
   }
@@ -3133,6 +3152,7 @@ export namespace Prisma {
   export type UserUpdateInput = {
     user?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    photo?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     comments?: PostUpdateManyWithoutUserNestedInput
   }
@@ -3141,6 +3161,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     user?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    photo?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     comments?: PostUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -3149,12 +3170,14 @@ export namespace Prisma {
     id?: number
     user: string
     password: string
+    photo?: string
     email: string
   }
 
   export type UserUpdateManyMutationInput = {
     user?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    photo?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3162,6 +3185,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     user?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    photo?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3257,6 +3281,7 @@ export namespace Prisma {
     id?: SortOrder
     user?: SortOrder
     password?: SortOrder
+    photo?: SortOrder
     email?: SortOrder
   }
 
@@ -3268,6 +3293,7 @@ export namespace Prisma {
     id?: SortOrder
     user?: SortOrder
     password?: SortOrder
+    photo?: SortOrder
     email?: SortOrder
   }
 
@@ -3275,6 +3301,7 @@ export namespace Prisma {
     id?: SortOrder
     user?: SortOrder
     password?: SortOrder
+    photo?: SortOrder
     email?: SortOrder
   }
 
@@ -3599,6 +3626,7 @@ export namespace Prisma {
   export type UserCreateWithoutCommentsInput = {
     user: string
     password: string
+    photo?: string
     email: string
   }
 
@@ -3606,6 +3634,7 @@ export namespace Prisma {
     id?: number
     user: string
     password: string
+    photo?: string
     email: string
   }
 
@@ -3628,6 +3657,7 @@ export namespace Prisma {
   export type UserUpdateWithoutCommentsInput = {
     user?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    photo?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3635,6 +3665,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     user?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    photo?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
   }
 
