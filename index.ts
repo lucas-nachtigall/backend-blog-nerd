@@ -105,7 +105,7 @@ async function login(username: string, password: string) {
   };
 }
 
-async function putUsser(id: number, user: string, email: string) {
+async function putUsser(id: number, user: string, email: string, photo: string) {
   const updateUser = await prisma.user.update({
     where: {
       id: id,
@@ -113,6 +113,7 @@ async function putUsser(id: number, user: string, email: string) {
     data: {
       user,
       email,
+      photo,
     },
   });
 
@@ -186,10 +187,10 @@ app.post("/login", async (req: any, res: any) => {
 });
 
 app.post("/putUsser", async (req: any, res: any) => {
-  const { id, user, email } = req.body;
+  const { id, user, email, photo } = req.body;
 
   try {
-    const updatedUser = await putUsser(id, user, email);
+    const updatedUser = await putUsser(id, user, email, photo);
 
     res
       .status(200)
