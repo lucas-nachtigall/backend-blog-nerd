@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.ts",
-    "build": "tsc index.ts",
+    "build": "tsc ./api/core/index.ts",
     "postbuild": "npx prisma migrate deploy init && npx prisma generate",
     "start": "node index.js"
   },
