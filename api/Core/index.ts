@@ -3,10 +3,10 @@ const prisma = new PrismaClient();
 
 const express = require("express");
 const app = express();
+const serverless = require("serverless-http");
 
 const cors = require("cors");
 
-//aqui terá o banco na nuvem
 
 const bcrypt = require("bcrypt");
 
@@ -14,16 +14,16 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "*", 
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, 
+    credentials: true,
   })
 );
 
-app.use(express.json());
-app.listen(3333, () => {
-  console.log("rodando");
-});
+// app.use(express.json());
+// app.listen(3333, () => {
+//   console.log("rodando");
+// });
 
 
 async function createUser(user: string, hashedPassword: string, email: string) {
@@ -216,4 +216,5 @@ app.get("/posts", async (req: any, res: any) => {
   }
 })
 
+module.exports.handler = serverless(app);
 
