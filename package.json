@@ -8,7 +8,7 @@
     "dev": "nodemon index.ts",
     "build": "tsc ./api/Core/index.ts",
     "postbuild": "npx prisma migrate deploy init && npx prisma generate",
-    "start": "node index.js"
+    "start": "node ./api/Core/index.js"
   },
   "keywords": [],
   "author": "",

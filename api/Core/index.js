@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var client_1 = require("./prisma/generated/client");
+var client_1 = require("../../prisma/generated/client");
 var prisma = new client_1.PrismaClient();
 var express = require("express");
 var app = express();
@@ -58,14 +58,12 @@ app.use(express.json());
 app.use(cors({
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Permite credenciais (por exemplo, cookies)
+    credentials: true,
 }));
 app.use(express.json());
 app.listen(3333, function () {
     console.log("rodando");
 });
-// const { DateTime } = require('luxon');
-//criar pasta e colocar funtion na pasta
 function createUser(user, hashedPassword, email) {
     return __awaiter(this, void 0, void 0, function () {
         var Createuser, error_1;
@@ -91,7 +89,6 @@ function createUser(user, hashedPassword, email) {
         });
     });
 }
-// Função para criar um comentário associado a um usuário
 function createComment(id, title, content) {
     return __awaiter(this, void 0, void 0, function () {
         var currentUtcDateTime, newComment, error_2;
