@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.ts",
-    "build": "tsc ./api/Core/index.ts",
+    "build": "tsc ./api/core/index.ts",
     "postbuild": "npx prisma migrate deploy init && npx prisma generate",
-    "start": "node ./api/Core/index.js"
+    "start": "node ./api/core/index.js"
   },
   "keywords": [],
   "author": "",
