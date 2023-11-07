@@ -1,4 +1,4 @@
-import { PrismaClient } from "./prisma/generated/client";
+import { PrismaClient } from "../../prisma/generated/client";
 const prisma = new PrismaClient();
 
 const express = require("express");
@@ -14,9 +14,9 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "*", // Permite solicitações de qualquer origem
+    origin: "*", 
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Permite credenciais (por exemplo, cookies)
+    credentials: true, 
   })
 );
 
@@ -25,9 +25,6 @@ app.listen(3333, () => {
   console.log("rodando");
 });
 
-// const { DateTime } = require('luxon');
-
-//criar pasta e colocar funtion na pasta
 
 async function createUser(user: string, hashedPassword: string, email: string) {
   try {
@@ -44,7 +41,8 @@ async function createUser(user: string, hashedPassword: string, email: string) {
     throw error;
   }
 }
-// Função para criar um comentário associado a um usuário
+
+
 async function createComment(id: number, title: string, content: string) {
   try {
     const currentUtcDateTime = new Date();
