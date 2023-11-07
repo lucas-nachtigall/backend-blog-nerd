@@ -10,7 +10,7 @@ const cors = require("cors");
 
 const bcrypt = require("bcrypt");
 
-app.use(express.json());
+// app.use(express.json());
 
 app.use(
   cors({
@@ -20,6 +20,10 @@ app.use(
   })
 );
 
+if (!module.parent) {
+  app.listen(3000);
+  console.log("Express started on port 3000");
+}
 // app.use(express.json());
 // app.listen(3333, () => {
 //   console.log("rodando");
