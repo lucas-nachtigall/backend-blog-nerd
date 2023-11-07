@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.ts",
-    "build": "tsc ./api/core/index.ts",
+    "build": "npx tsc -p tsconfig.json",
     "postbuild": "npx prisma migrate deploy init && npx prisma generate",
-    "start": "node ./api/core/index.js"
+    "start": "npx tsc -p tsconfig.json && node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -26,8 +26,6 @@
     "express": "^4.18.2",
     "luxon": "^3.4.3",
     "serverless-http": "^3.2.0"
-  },
-  "engines": {
-    "node": "18.16.0"
   }
+
 }
